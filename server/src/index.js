@@ -16,7 +16,10 @@ import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: config.clientUrl, // Your React app URL
+  credentials: true // Allow credentials (cookies) to be sent and received
+}));
 app.use(helmet()); // set various HTTP headers to enhance security
 app.use(express.json());
 app.use(sanitizeInput);
